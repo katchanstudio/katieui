@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>katie chan · lily living</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Rubik+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-main: #4F4F4F;
+      --bg-layer-1: #5A5A5A;
+      --bg-layer-2: #606060;
+      --border-line: #707070;
+      --text-primary: #EDEDED;
+      --text-secondary: rgba(237, 237, 237, 0.92);
+      --accent-green: #7FA873;
+      --accent-green-hover: #739B68;
+      --accent-green-border: #CFE3C6;
+      --container-max-width: 1600px;
+      --container-padding-x: 40px;
+      --section-gap: 72px;
+      --content-width: 1600px;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Figtree', 'Poppins', 'Montserrat', 'Nunito', Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Rubik One', 'Figtree', 'Poppins', sans-serif;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0 var(--container-padding-x);
+      width: 100%;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      background-color: transparent;
+      z-index: 100;
+      color: var(--text-primary);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-icon {
+      font-size: 20px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-icons span {
+      font-size: 22px;
+      transition: opacity 0.2s ease;
+      cursor: default;
+      display: inline-block;
+      font-weight: 300;
+      -webkit-text-stroke: 1.2px #fff;
+      color: rgba(255,255,255,0.9);
+      opacity: 0.95;
+    }
+
+    .nav-icons span:hover {
+      opacity: 1;
+      -webkit-text-stroke-color: var(--accent-green);
+    }
+
+    .nav-icons a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .white-text {
+      color: var(--text-primary);
+    }
+
+    .case-study-page {
+      padding-top: 120px;
+      padding-bottom: 110px;
+    }
+
+    .case-study-header {
+      max-width: var(--content-width);
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .case-study-title {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.95;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .case-study-subtitle {
+      font-size: clamp(22px, 2.2vw, 36px);
+      font-weight: 400;
+      color: var(--text-secondary);
+      letter-spacing: 0.01em;
+    }
+
+    .case-study-content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .intro-copy,
+    .full-width-copy,
+    .text-block,
+    .bold-intro {
+      font-size: 20px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    .bold-intro {
+      font-weight: 700;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .intro-copy {
+      max-width: 860px;
+      margin: 0 auto 52px;
+    }
+
+    .content-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 54px;
+      align-items: center;
+      margin-bottom: var(--section-gap);
+    }
+
+    .content-row.reverse {
+      direction: rtl;
+    }
+
+    .content-row.reverse > * {
+      direction: ltr;
+    }
+
+    .text-block {
+      max-width: 100%;
+    }
+
+    .media-card {
+      display: block;
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #d9d9d9;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .media-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ratio-2-3 {
+      aspect-ratio: 3 / 2;
+    }
+
+    .ratio-2-5 {
+      aspect-ratio: 5 / 2;
+    }
+
+    .full-width-copy {
+      margin-bottom: 36px;
+    }
+
+    .bottom-media {
+      width: 100%;
+    }
+
+    .bold-text-block {
+      font-weight: 700;
+    }
+
+    @media screen and (max-width: 1000px) {
+      .content-row {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 56px;
+      }
+
+      .content-row.reverse {
+        direction: ltr;
+      }
+
+      .intro-copy,
+      .full-width-copy,
+      .text-block {
+        font-size: 18px;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      :root {
+        --container-padding-x: 30px;
+      }
+
+      .navbar {
+        padding: 0 24px;
+        height: 70px;
+      }
+
+      .nav-icons {
+        gap: 18px;
+      }
+
+      .nav-icons span {
+        font-size: 20px;
+      }
+
+      .case-study-page {
+        padding-top: 104px;
+        padding-bottom: 80px;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .navbar {
+        padding: 0 20px;
+        height: 65px;
+      }
+
+      .logo-area {
+        font-size: 16px;
+      }
+
+      .nav-icons span {
+        font-size: 18px;
+      }
+
+      .intro-copy,
+      .full-width-copy,
+      .text-block {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo-area">
+      <span>katie chan</span>
+      <span class="logo-icon"><i class="fa-regular fa-file-lines white-text"></i></span>
+    </div>
+
+    <div class="nav-icons">
+      <span><a href="portfolio.html"><i class="fa-solid fa-briefcase white-text"></i></a></span>
+      <span><a href="about.html"><i class="fa-solid fa-user white-text"></i></a></span>
+      <span><a href="index.html#contact-section"><i class="fa-solid fa-comment white-text"></i></a></span>
+    </div>
+  </header>
+
+  <main class="case-study-page">
+    <div class="container">
+      <section class="case-study-header">
+        <h1 class="case-study-title">Lily Living</h1>
+        <p class="case-study-subtitle">Case Study of the brand identity of Lily Living</p>
+      </section>
+
+      <section class="case-study-content">
+        <p class="bold-intro">
+          The Problem
+        </p>
+        <p class="intro-copy">
+          The fictional Lily Living brand lacked a cohesive identity. Without a polished look, it struggled to feel
+          professional or build trust with customers. A scattered visual style made it hard to create a warm,
+          welcoming experience.
+        </p>
+
+        <div class="content-row">
+          <a class="media-card ratio-2-3">
+            <img src="images/lily-living1.png" alt="Lily Living brand preview 1">
+          </a>
+          <div>
+            <div class="text-block bold-text-block">
+              Overview
+            </div>
+            <div class="text-block">
+              I helped build a complete brand identity for a small business that makes handmade home goods. This was
+              more than just a logo, it was about capturing an identity. I wanted the brand to be warm and memorable.
+              As a designer, I know how important first impressions are, and I wanted Lily Living to match the quality
+              of the products.
+            </div>
+          </div>
+        </div>
+
+        <div class="content-row reverse">
+          <a class="media-card ratio-2-3">
+            <img src="images/lily-living2.png" alt="Lily Living brand preview 2">
+          </a>
+
+          <div>
+            <div class="text-block bold-text-block">
+              The Process
+            </div>
+            <div class="text-block">
+              I started with a mood board to map out textures, shapes, and colors to set the tone. Then I built a
+              flexible logo kit with three badge styles, using dark green as the main color with cream and black as
+              accents. Font selection took a lot of time because of the endless choices, but I was satisfied with this
+              rendition. I chose a color palette that felt natural and paired it with soft rounded fonts to keep things
+              approachable with a touch of femininity. Balancing warmth with professionalism took a few rounds of
+              refinement before everything finally clicked and felt perfect.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-block bold-text-block">
+            Growth and Insights
+          </div>
+          <div class="text-block">
+            This project showed me how much a strong identity matters for a small business. I learned that a mood board
+            is a real tool for making intentional choices early on. Creating a flexible logo kit taught me the value of
+            giving a brand options. Most of all, I saw how color and typography shape not just the look but the feeling
+            of a brand. It’s the difference between feeling like a business and feeling like someone’s craft. The whole
+            process reminded me why I love helping small businesses find their visual voice.
+          </div>
+        </div>
+        <br>
+
+        <a class="media-card ratio-2-5 bottom-media">
+          <img src="images/lily-living3.png" alt="Lily Living brand preview 3">
+        </a>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>

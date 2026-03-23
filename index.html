@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>katie chan · studio</title>
+  <!-- Figtree for body text, Rubik One for headings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Rubik+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* --- CSS RESET & BASE --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Figtree', 'Poppins', 'Montserrat', 'Nunito', Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    /* Rubik One for all headings */
+    h1, h2, h3, .hero-content h1, .contact-left h2 {
+      font-family: 'Rubik One', 'Figtree', 'Poppins', sans-serif;
+      font-weight: 400; /* Rubik One only comes in 400 weight */
+    }
+
+    /* --- DESIGN TOKENS (exact from spec) --- */
+    :root {
+      --bg-main: #4A4A4A;
+      --bg-section: #555555;
+      --bg-card: #5C5C5C;
+
+      --text-primary: #F2F2F2;
+      --text-muted: #D6D6D6;
+
+      --accent-green: #7AA874;
+      --accent-green-hover: #6A9764;
+
+      --button-bg: #E6E6E6;
+      --button-hover: #DCDCDC;
+      --button-text: #3A3A3A;
+
+      --shadow-soft: 0 4px 0 rgba(0,0,0,0.25);
+      --shadow-large: 0 20px 40px rgba(0,0,0,0.25);
+
+      /* spacing tokens */
+      --section-padding-y: 120px;   /* 120px fits 100–140 range */
+      --container-max-width: 1200px;
+      --container-padding-x: 60px;  /* 40–80, 60 is balanced */
+      --card-width: 1000px;
+    }
+
+    /* --- UTILITY / LAYOUT HELPERS --- */
+    .container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0 var(--container-padding-x);
+      width: 100%;
+    }
+
+    /* --- TOP NAVIGATION (minimal, fixed, transparent) --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;               /* between 70–80px */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;            /* 40–80 range */
+      background-color: transparent;
+      z-index: 100;
+      /* blend with hero */
+      color: var(--text-primary);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 18px;           /* spec logo size */
+      letter-spacing: 0.02em;
+    }
+
+    .logo-icon {
+      font-size: 20px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 28px;                 /* spec ~24px, using 28 for air */
+    }
+
+    .nav-icons span {
+      font-size: 22px;            /* icon size ~22px */
+      stroke-width: 2;
+      color: var(--text-primary);
+      transition: opacity 0.2s ease;
+      cursor: default;            /* non-interactive demo, but match spec */
+      opacity: 0.9;
+    }
+
+    .nav-icons span:hover {
+      opacity: 1;                 /* slight change per spec */
+    }
+
+    /* --- HERO SECTION (100vh, centered) --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: var(--bg-main);  /* same as body, transparent relative */
+      padding-top: 76px;                  /* fixed header height */
+    }
+
+    .hero-content {
+      max-width: 700px;           /* spec ~700px centered */
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .hero-content h1 {
+      font-size: 88px;             /* 80–96, chose 88 */
+      font-family: 'Rubik One', 'Figtree', 'Poppins', sans-serif;
+      font-weight: 400;
+      letter-spacing: 5px;          /* 4–6px */
+      line-height: 1.1;
+      margin-bottom: 20px;          /* spec 20px */
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .hero-content .sub {
+      font-size: 26px;              /* 24–28 */
+      font-weight: 800;
+      font-family: 'Figtree', 'Poppins', sans-serif;
+      letter-spacing: 1.2px;
+      line-height: 1.4;
+      margin-bottom: 30px;          /* spec 30px */
+    }
+
+    .hero-content .btn-portfolio {
+      display: inline-block;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      font-weight: 600;
+      font-family: 'Figtree', 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      padding: 14px 34px;           /* 12px 28px ~ with slight increase */
+      border-radius: 10px;           /* 8–10px */
+      border: none;
+      box-shadow: var(--shadow-soft);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-top: 10px;              /* spec 10px */
+      letter-spacing: 0.5px;
+      cursor: pointer;               /* button feel */
+    }
+
+    .hero-content .btn-portfolio:hover {
+      background-color: var(--button-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(0,0,0,0.2); /* keep depth on lift */
+    }
+
+    /* --- STATEMENT STRIP (full width, light gray) --- */
+    .statement-strip {
+      width: 100%;
+      background-color: var(--bg-section);   /* #555555, slightly lighter */
+      padding: 82px 20px;                    /* spec ~80px 20px */
+      text-align: center;
+    }
+
+    .statement-strip p {
+      max-width: 900px;                       /* spec 900px */
+      margin: 0 auto;
+      font-size: 30px;                         /* 28–32 */
+      font-weight: 400;
+      font-family: 'Figtree', 'Poppins', sans-serif;
+      letter-spacing: 2.2px;                    /* slightly wide */
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+
+    .statement-strip strong {
+      font-weight: 700;                         /* bold emphasis exact */
+      color: var(--text-primary);                /* keep white, bold */
+    }
+
+    /* --- CONTACT CARD SECTION (with top margin) --- */
+    .contact-section {
+      padding: 0 var(--container-padding-x);
+      margin-top: 120px;                         /* spec margin top */
+      margin-bottom: 100px;                       /* extra bottom space */
+      display: flex;
+      justify-content: center;
+    }
+
+    .contact-card {
+      position: relative;
+      max-width: var(--card-width);
+      width: 100%;
+      background-color: var(--bg-card);
+      border-radius: 36px;
+      padding: 80px;
+      box-shadow: var(--shadow-large);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 100px;
+      overflow: hidden;
+    }
+
+
+    /* Envelope container */
+    .envelope-container {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+      pointer-events: none;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Envelope styling */
+    .envelope-graphic {
+      width: 280px;
+      height: 140px;
+      background: #4B4B4B;
+      box-shadow: 0 0 1px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.25);
+      position: relative;
+      opacity: 0.4;
+    }
+    
+    .envelope-graphic:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border: 0 solid rgba(0,0,0,0.25);
+      border-width: 70px 140px;
+      border-top-color: transparent;
+      border-left-color: #5C5C5C;
+      border-right-color: #5C5C5C;
+      border-bottom-color: #3F3F3F;
+      z-index: 2;
+    }
+    
+    .envelope-graphic .flap {
+      position: absolute;
+      width: 100%;
+      height: 0;
+      border: 0 solid transparent;
+      border-width: 70px 140px;
+      z-index: 3;
+    }
+    
+    .envelope-graphic .flap.front {
+      border-left-color: #6A6A6A;
+      border-right-color: #6A6A6A;
+      border-bottom-color: #4B4B4B;
+      z-index: 3;
+    }
+    
+    .envelope-graphic .flap.front:after {
+      content: '';
+      width: 100%;
+      height: 0;
+      position: absolute;
+      left: -140px;
+      bottom: -70px;
+      border: 0 solid transparent;
+      border-width: 69px 140px;
+      border-bottom-color: #5C5C5C;
+    }
+    
+    .envelope-graphic .flap.top {
+      border-top-width: 75px;
+      border-top-color: #3F3F3F;
+      z-index: 3;
+    }
+    
+    .envelope-graphic .flap.top:after {
+      content: '';
+      position: absolute;
+      left: -140px;
+      top: -75px;
+      width: 100%;
+      height: 0;
+      border: 0 solid transparent;
+      border-width: 74px 140px;
+      border-top-color: #5C5C5C;
+    }
+    
+    .envelope-graphic .letter {
+      position: absolute;
+      width: 272px;
+      height: 124px;
+      background: #6A6A6A;
+      top: 8px;
+      left: 4px;
+      border: 1px solid #3F3F3F;
+      z-index: 1;
+      opacity: 0.6;
+    }
+    
+    .envelope-graphic .letter:before {
+      content: '';
+      position: absolute;
+      width: 270px;
+      height: 75%;
+      left: -1px;
+      background: #5C5C5C;
+      border: 1px solid #3F3F3F;
+    }
+    
+    /* Responsive envelope */
+    @media screen and (max-width: 800px) {
+      .envelope-graphic {
+        width: 240px;
+        height: 120px;
+      }
+      .envelope-graphic:after,
+      .envelope-graphic .flap {
+        border-width: 60px 120px;
+      }
+      .envelope-graphic .flap.top:after,
+      .envelope-graphic .flap.front:after {
+        border-width: 59px 120px;
+        left: -120px;
+      }
+      .envelope-graphic .letter {
+        width: 232px;
+        height: 104px;
+      }
+    }
+    
+    @media screen and (max-width: 500px) {
+      .envelope-graphic {
+        width: 200px;
+        height: 100px;
+      }
+      .envelope-graphic:after,
+      .envelope-graphic .flap {
+        border-width: 50px 100px;
+      }
+    }
+
+    /* left column */
+    .contact-left {
+      flex: 1 1 200px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-left .small-intro {
+      font-size: 17px;                             /* 16–18 */
+      font-weight: 400;
+      font-family: 'Figtree', 'Poppins', sans-serif;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .contact-left h2 {
+      font-size: 52px;                              /* 48–56 */
+      font-family: 'Figtree', 'Poppins', sans-serif;
+      font-weight: 900;
+      letter-spacing: 2.2px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    /* right column */
+    .contact-right {
+      flex: 1 1 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      font-size: 17px;                              /* email/location 16–18 */
+      font-weight: 400;
+      font-family: 'Figtree', 'Poppins', sans-serif;
+      color: var(--text-primary);
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-item .label {
+      font-size: 15px;
+      color: var(--text-muted);
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: 'Figtree', 'Poppins', sans-serif;
+    }
+
+    .contact-item .value {
+      font-weight: 400;
+      font-size: 18px;
+      font-family: 'Figtree', 'Poppins', sans-serif;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 28px;                                     /* social spacing */
+      margin-top: 18px;
+    }
+
+    .social-icons span {
+      font-size: 28px;                               /* 24–28px */
+      color: var(--text-primary);
+      transition: opacity 0.2s ease;
+      cursor: default;
+      stroke-width: 2;
+    }
+
+    .social-icons span:hover {
+      opacity: 0.8;                                   /* spec opacity change */
+    }
+    .green-text {
+        color: var(--accent-green);
+    }
+    .white-text{
+        color: var(--text-primary);
+    }
+
+    /* Icon styling */
+    .nav-icons span, .social-icons span {
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    /* Responsive design */
+    @media screen and (max-width: 800px) {
+      :root {
+        --container-padding-x: 30px;
+        --section-padding-y: 80px;
+      }
+      .contact-card {
+        flex-direction: column;
+        gap: 48px;
+        padding: 50px;
+      }
+      .contact-left h2 {
+        font-size: 44px;
+      }
+      .statement-strip p {
+        font-size: 24px;
+      }
+      .hero-content h1 {
+        font-size: 64px;
+        letter-spacing: 4px;
+      }
+      .hero-content .sub {
+        font-size: 22px;
+      }
+      .navbar {
+        padding: 0 24px;
+      }
+      .nav-icons {
+        gap: 18px;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .hero-content h1 {
+        font-size: 48px;            /* matches spec mobile approx */
+      }
+      .hero-content .sub {
+        font-size: 20px;
+      }
+      .statement-strip p {
+        font-size: 22px;
+        letter-spacing: 1px;
+      }
+      .contact-card {
+        padding: 40px;
+      }
+      .contact-left h2 {
+        font-size: 38px;
+      }
+      .navbar .logo-area {
+        font-size: 16px;
+      }
+      .nav-icons span {
+        font-size: 20px;
+      }
+    }
+
+    /* additional fine tuning */
+    .contact-card .contact-right .email,
+    .contact-card .contact-right .location {
+      font-size: 18px;               /* spec 16-18 */
+      color: var(--text-primary);
+    }
+
+    /* dummy hover for social icons */
+    .social-icons span {
+      cursor: default;
+    }
+
+    /* ensure statement strip text uses bold exactly where intended */
+    .statement-strip p {
+      font-weight: 400;
+    }
+    .statement-strip strong {
+      font-weight: 700;
+    }
+
+    /* contact left / right gap adjustment */
+    @media screen and (max-width: 700px) {
+      .contact-card {
+        gap: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED TRANSPARENT NAV (minimal) -->
+  <header class="navbar">
+    <div class="logo-area">
+      <span>katie chan</span>
+      <span class="logo-icon"><i class="fa-solid fa-file-lines white-text"></i></span>  <!-- small doc icon -->
+    </div>
+    <div class="nav-icons">
+      <span><a href="portfolio.html" target="_blank"><i class="fa-solid fa-briefcase white-text"></i></a></span>   <!-- briefcase outline (via stroke) -->
+      <span><a href="about.html"><i class="fa-solid fa-user white-text"></i></a></span>   <!-- user -->
+      <span><a href="#contact-section"><i class="fa-solid fa-comment white-text"></i></a></span>   <!-- chat bubble -->
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION 100vh -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>WELCOME</h1>
+        <div class="sub green-text">to katchanstudio</div>
+        <a href="portfolio.html" class="btn-portfolio" role="button">portfolio</a>
+      </div>
+    </section>
+
+    <!-- STATEMENT STRIP (full width, lighter gray) -->
+    <section class="statement-strip">
+      <p>
+        designed by <strong>me</strong>. built for <strong>you</strong>. loved by <strong>users</strong>.
+      </p>
+    </section>
+
+    <!-- CONTACT CARD SECTION (with envelope graphic) -->
+    <section id="contact-section" class="contact-section">
+      <div class="contact-card">
+        <!-- left column -->
+        <div class="contact-left">
+          <div class="small-intro">let’s create something...</div>
+          <h2 class="green-text">CONTACT ME</h2>
+        </div>
+        <!-- right column -->
+        <div class="contact-right">
+          <div class="contact-item">
+            <span class="label">Email</span>
+            <span class="value">katchanstudio@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="label">Location</span>
+            <span class="value">american fork, utah</span>
+          </div>
+          <div class="social-icons">
+            <span><a href="https://www.linkedin.com/in/katie-chan-172b18268" target="_blank"><i class="fa-brands fa-linkedin white-text"></i></a></span>   <!-- linkedin placeholder (outline) -->
+            <span><a href="https://www.instagram.com/katchanstudio" target="_blank"><i class="fa-brands fa-instagram white-text"></i></a></span>   <!-- instagram placeholder (outline) -->
+          </div>
+        </div>
+        <!-- envelope lines are drawn via pseudo-elements (diagonal borders) -->
+      </div>
+    </section>
+  </main>
+
+  <!-- minimal JavaScript -->
+  <script>
+    (function() {
+      console.log('katie chan studio · design spec replica');
+    })();
+  </script>
+  <!-- additional icon styling -->
+  <style>
+    /* tweak icons to appear more outlined / stroke-based */
+    .nav-icons span, .social-icons span {
+      font-weight: 300;
+      -webkit-text-stroke: 1.2px #fff;
+      color: rgba(255,255,255,0.9);
+      opacity: 0.95;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+    /* Override for social icons to be larger */
+    .social-icons span {
+      -webkit-text-stroke: 1px #fff;
+      font-size: 30px;
+    }
+    /* button transition already there */
+    .btn-portfolio {
+      cursor: pointer;
+    }
+    /* small fix: envelope lines overlapping text? not really, but they float */
+    .contact-card {
+      overflow: hidden;
+    }
+    /* ensure heading spacing matches spec: 80px padding inside card */
+    .contact-left h2 {
+      margin-top: 0;
+    }
+    /* icon subtle hover effect */
+    .nav-icons span:hover {
+      opacity: 1;
+      -webkit-text-stroke-color: var(--accent-green);
+    }
+  </style>
+</body>
+</html>

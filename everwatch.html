@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>katie chan · everwatch</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Rubik+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-main: #4F4F4F;
+      --bg-layer-1: #5A5A5A;
+      --bg-layer-2: #606060;
+      --border-line: #707070;
+      --text-primary: #EDEDED;
+      --text-secondary: rgba(237, 237, 237, 0.92);
+      --accent-green: #7FA873;
+      --accent-green-hover: #739B68;
+      --accent-green-border: #CFE3C6;
+      --container-max-width: 1600px;
+      --container-padding-x: 40px;
+      --section-gap: 72px;
+      --content-width: 1600px;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Figtree', 'Poppins', 'Montserrat', 'Nunito', Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Rubik One', 'Figtree', 'Poppins', sans-serif;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0 var(--container-padding-x);
+      width: 100%;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      background-color: transparent;
+      z-index: 100;
+      color: var(--text-primary);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-icon {
+      font-size: 20px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-icons span {
+      font-size: 22px;
+      transition: opacity 0.2s ease;
+      cursor: default;
+      display: inline-block;
+      font-weight: 300;
+      -webkit-text-stroke: 1.2px #fff;
+      color: rgba(255,255,255,0.9);
+      opacity: 0.95;
+    }
+
+    .nav-icons span:hover {
+      opacity: 1;
+      -webkit-text-stroke-color: var(--accent-green);
+    }
+
+    .nav-icons a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .white-text {
+      color: var(--text-primary);
+    }
+
+    .case-study-page {
+      padding-top: 120px;
+      padding-bottom: 110px;
+    }
+
+    .case-study-header {
+      max-width: var(--content-width);
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .case-study-title {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.95;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .case-study-subtitle {
+      font-size: clamp(22px, 2.2vw, 36px);
+      font-weight: 400;
+      color: var(--text-secondary);
+      letter-spacing: 0.01em;
+    }
+
+    .case-study-content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .intro-copy,
+    .full-width-copy,
+    .text-block {
+      font-size: 20px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    .intro-copy {
+      max-width: 860px;
+      margin: 0 auto 52px;
+    }
+
+    .content-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 54px;
+      align-items: center;
+      margin-bottom: var(--section-gap);
+    }
+
+    .content-row.reverse {
+      direction: rtl;
+    }
+
+    .content-row.reverse > * {
+      direction: ltr;
+    }
+
+    .text-block {
+      max-width: 100%;
+    }
+
+    .media-card {
+      display: block;
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #d9d9d9;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .media-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 2:3 ratio */
+    .ratio-2-3 {
+      aspect-ratio: 3 / 2;
+    }
+
+    /* 2:5 ratio */
+    .ratio-2-5 {
+      aspect-ratio: 5 / 2;
+    }
+
+    .full-width-copy {
+      margin-bottom: 36px;
+    }
+
+    .bottom-media {
+      width: 100%;
+    }
+
+    .figma-embed {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .figma-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+    
+      width: 100%;
+      height: 100%;
+    
+      border: none;
+    }
+
+    @media screen and (max-width: 1000px) {
+      .content-row {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 56px;
+      }
+
+      .content-row.reverse {
+        direction: ltr;
+      }
+
+      .intro-copy,
+      .full-width-copy,
+      .text-block {
+        font-size: 18px;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      :root {
+        --container-padding-x: 30px;
+      }
+
+      .navbar {
+        padding: 0 24px;
+        height: 70px;
+      }
+
+      .nav-icons {
+        gap: 18px;
+      }
+
+      .nav-icons span {
+        font-size: 20px;
+      }
+
+      .case-study-page {
+        padding-top: 104px;
+        padding-bottom: 80px;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .navbar {
+        padding: 0 20px;
+        height: 65px;
+      }
+
+      .logo-area {
+        font-size: 16px;
+      }
+
+      .nav-icons span {
+        font-size: 18px;
+      }
+
+      .intro-copy,
+      .full-width-copy,
+      .text-block {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo-area">
+      <span>katie chan</span>
+      <span class="logo-icon"><i class="fa-regular fa-file-lines white-text"></i></span>
+    </div>
+
+    <div class="nav-icons">
+      <span><a href="portfolio.html"><i class="fa-solid fa-briefcase white-text"></i></a></span>
+      <span><a href="about.html"><i class="fa-solid fa-user white-text"></i></a></span>
+      <span><a href="index.html#contact-section"><i class="fa-solid fa-comment white-text"></i></a></span>
+    </div>
+  </header>
+
+  <main class="case-study-page">
+    <div class="container">
+      <section class="case-study-header">
+        <h1 class="case-study-title">Everwatch</h1>
+        <p class="case-study-subtitle">Case Study of the revised Everwatch display</p>
+      </section>
+      
+      <section class="case-study-content">
+        <p class="intro-copy">
+          <strong>The Problem</strong><br><br>
+          The Everwatch had a functional but uninspired interface. The original design lacked personality and clarity, making a minimalist watch feel a lot more complicated than it needed to be.
+        </p>
+      
+        <div class="content-row">
+          <a class="media-card ratio-2-3">
+            <img src="images/ever-watch1.png" alt="Everwatch preview image 1">
+          </a>
+        
+          <div class="text-block">
+            <strong>Overview</strong><br><br>
+            I was given an original Figma prototype for a smart watch concept called the Everwatch. It features an e-ink display and is built around simplicity with no extra apps, just the essentials for battery longevity. The original file included all the pages they wanted, but the navigation felt a bit flat and needed to be updated to a more modern design.
+          </div>
+        </div>
+      
+        <div class="content-row reverse">
+          <div class="media-card ratio-2-3 figma-embed">
+            <iframe 
+              src="https://embed.figma.com/proto/fph8yH04pznWCZaZdpWul7/Case-Study-4?node-id=1-15&p=f&viewport=-1560%2C-1773%2C0.7&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A15&page-id=0%3A1&embed-host=share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        
+          <div class="text-block">
+            <strong>The Process</strong><br><br>
+            I focused on making the navigation feel natural and intentional. I redesigned the home screen to show the current time, day name, day number, and a notification icon. Clicking the right button from home opens notifications with texts and alerts. Clicking the left button shows activity tracking with steps, heart rate, a daily step goal, and a weekly tracker. I built a fully clickable Figma prototype so every button actually changes the screen, which you can try here. I tested the flow to make sure users never felt lost and kept the e-ink aesthetic clean with high contrast and minimal detail.
+          </div>
+        </div>
+      
+        <p class="full-width-copy">
+          <strong>Growth and Insights</strong><br><br>
+          This project reminded me that minimalism is harder than it looks. Stripping away features is easy, but keeping the remaining ones intuitive takes real thought. I learned to appreciate the constraints of a simple display, it forces you to prioritize what matters most. Building a fully clickable prototype in Figma made a huge difference. I could actually simulate how a user would move between screens, which revealed issues in my process that were missed. It also showed me that even a simple product needs careful information architecture. The Everwatch became a lesson in restraint and the value of testing interactions early, not just visuals.
+        </p>
+      
+        <a class="media-card ratio-2-5 bottom-media">
+          <img src="images/ever-watch2.png" alt="Everwatch preview image 2">
+        </a>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>

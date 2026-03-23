@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>katie chan · leopardy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Rubik+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-main: #4F4F4F;
+      --text-primary: #EDEDED;
+      --text-secondary: rgba(237, 237, 237, 0.92);
+      --accent-green: #7FA873;
+      --container-max-width: 1600px;
+      --container-padding-x: 40px;
+      --section-gap: 72px;
+      --content-width: 1600px;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Rubik One', sans-serif;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0 var(--container-padding-x);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      z-index: 100;
+    }
+
+    .logo-area {
+      display: flex;
+      gap: 8px;
+      font-size: 18px;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-icons a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .case-study-page {
+      padding-top: 120px;
+      padding-bottom: 110px;
+    }
+
+    .case-study-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .case-study-title {
+      font-size: clamp(42px, 6vw, 78px);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .case-study-subtitle {
+      font-size: clamp(22px, 2.2vw, 36px);
+      color: var(--text-secondary);
+    }
+
+    .intro-copy,
+    .text-block,
+    .bold-intro {
+      font-size: 20px;
+      color: var(--text-secondary);
+    }
+
+    .bold-intro {
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .intro-copy {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .content-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 54px;
+      margin-bottom: var(--section-gap);
+      align-items: center;
+    }
+
+    .content-row.reverse {
+      direction: rtl;
+    }
+
+    .content-row.reverse > * {
+      direction: ltr;
+    }
+
+    .media-card {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #d9d9d9;
+    }
+
+    .media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ratio-2-3 { aspect-ratio: 3 / 2; }
+    .ratio-2-5 { aspect-ratio: 5 / 2; }
+
+    .bold-text-block {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 1000px) {
+      .content-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo-area">
+    <span>katie chan</span>
+  </div>
+  <div class="nav-icons">
+    <a href="portfolio.html"><i class="fa-solid fa-briefcase"></i></a>
+    <a href="about.html"><i class="fa-solid fa-user"></i></a>
+    <a href="index.html#contact-section"><i class="fa-solid fa-comment"></i></a>
+  </div>
+</header>
+
+<main class="case-study-page">
+  <div class="container">
+
+    <section class="case-study-header">
+      <h1 class="case-study-title">Leopardy</h1>
+      <p class="case-study-subtitle">Case Study of Leopardy, a custom game board</p>
+    </section>
+
+    <section>
+
+      <p class="bold-intro">The Problem</p>
+      <p class="intro-copy">
+        Running a trivia game night is fun, but keeping track of scores and managing questions can get really tiring.
+        I created Leopardy to solve that problem and let hosts focus on the game while keeping pretty aesthetics.
+      </p>
+
+      <div class="content-row">
+        <div class="media-card ratio-2-3">
+          <img src="images/leopardy1.png" alt="">
+        </div>
+        <div>
+          <div class="bold-text-block">Overview</div>
+          <div class="text-block">
+            What is interesting about this project is how it was made. I designed the interface in Figma, then worked
+            with AI tools to build the actual app. The layout is straightforward. The main section holds the game board
+            with category cards and point values. On the left, you see live rankings for teams and players. The right
+            panel is where you control scores. Fun fact, there was absolutely zero hand coding involved!
+          </div>
+        </div>
+      </div>
+
+      <div class="content-row reverse">
+        <div class="media-card ratio-2-3">
+          <img src="images/leopardy2.png" alt="">
+        </div>
+        <div>
+          <div class="bold-text-block">The Process</div>
+          <div class="text-block">
+            Creating this project was one of the most engaging experiences I had. I challenged myself to only use vibe
+            coding in order for me to understand it better. The excitement of creating something I would use made me
+            excited to keep working on this project. One feature I really wanted was the ability to change questions
+            easily. Instead of hidden menus, I built an edit mode. When you turn it on, you can easily change the text
+            of any point or category card. It makes updating the game feel immediate and intuitive. Balancing that kind
+            of flexibility with a clean layout took a few rounds of tweaking. After testing it with a few friends, I
+            smoothed out the details until everything just worked.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="bold-text-block">Growth and Insights</div>
+        <div class="text-block">
+          This project showed me that you do not need to be a programmer to build a functional web tool anymore. The
+          biggest challenge was figuring out what the app actually needed to do and designing it in a way that made
+          sense for people using it. Once the concept and layout was clear, the development part came together naturally.
+          It was super rewarding to see something I sketched in Figma turn into a real app that people could actually
+          use. Leopardy ended up being a good reminder that the right tools and a focused idea can turn a simple concept
+          into something genuinely useful.
+        </div>
+      </div>
+
+      <br>
+
+      <div class="media-card ratio-2-5">
+        <img src="images/leopardy3.png" alt="">
+      </div>
+
+    </section>
+
+  </div>
+</main>
+
+</body>
+</html>

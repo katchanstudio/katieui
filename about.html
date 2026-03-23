@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>katie chan · about me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Rubik+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-main: #cfcfcf;
+      --text-main: #101010;
+      --text-soft: rgba(255,255,255,0.22);
+      --card-dark: #1d1d1d;
+      --shadow-soft: 0 16px 30px rgba(0,0,0,0.08);
+      --container: 1400px;
+      --nav-height: 84px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Figtree', Arial, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: 'Rubik One', 'Figtree', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 46px;
+      background: rgba(207, 207, 207, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.9rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-area span:first-child {
+      font-family: 'Rubik One', 'Figtree', sans-serif;
+      font-size: clamp(1.25rem, 2vw, 2rem);
+      line-height: 1;
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 1.6rem;
+    }
+
+    .nav-icons a,
+    .nav-icons button {
+      color: #111;
+      background: transparent;
+      border: 0;
+      font-size: inherit;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-icons a:hover,
+    .nav-icons button:hover {
+      transform: translateY(-2px);
+      opacity: 0.75;
+    }
+
+    .page-shell {
+      position: relative;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 28px 52px 80px;
+      min-height: calc(100vh - var(--nav-height));
+    }
+
+    .page-shell::before,
+    .page-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .giant-text {
+      position: absolute;
+      left: 10px;
+      top: 170px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: 'Rubik One', 'Figtree', sans-serif;
+      font-size: clamp(7rem, 11vw, 11rem);
+      line-height: 0.82;
+      letter-spacing: 0.01em;
+      color: rgba(255,255,255,0.22);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .content-grid {
+      position: relative;
+      margin-left: 470px;
+      padding-top: 40px;
+      display: grid;
+      grid-template-columns: 420px 360px;
+      column-gap: 80px;
+      row-gap: 42px;
+      align-items: start;
+    }
+
+    .intro {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 420px 360px;
+      gap: 30px 70px;
+      align-items: start;
+    }
+
+    .hello-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 18px;
+      padding-top: 10px;
+    }
+
+    .arc-title {
+      position: relative;
+      width: 420px;
+      height: 90px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin-bottom: -6px;
+    }
+
+    .arc-title span {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform-origin: center 150px;
+      font-family: 'Rubik One', 'Figtree', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1;
+      white-space: pre;
+      letter-spacing: 0.01em;
+    }
+
+    .portrait {
+      width: 290px;
+      height: 365px;
+      object-fit: cover;
+      display: block;
+      background: #bdbdbd;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    }
+
+    .copy-block {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      max-width: 420px;
+    }
+
+    .copy-block p + p {
+      margin-top: 1.35rem;
+    }
+
+    .tetris-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: auto 130px auto;
+      gap: 18px;
+      align-items: center;
+      margin-top: 6px;
+      width: fit-content;
+    }
+
+    .tetris-love {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      font-weight: 500;
+    }
+
+    .arrow-svg {
+      width: min(100%, 180px);
+      height: 44px;
+      overflow: visible;
+    }
+
+    .meter-card {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-width: 170px;
+      padding: 16px 22px;
+      border-radius: 18px;
+      background: var(--card-dark);
+      color: #fff;
+      font-weight: 800;
+      transform: rotate(12deg);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .meter-card .small {
+      font-style: italic;
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
+
+    .meter-card .big {
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+    }
+
+    .mid-copy {
+      max-width: 430px;
+      margin-top: 0;
+    }
+
+    .bottom-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 320px 240px;
+      gap: 54px;
+      align-items: start;
+      margin-top: 10px;
+      margin-left: 120px;
+    }
+
+    .cat-card {
+      width: 260px;
+      height: 260px;
+      transform: rotate(-16deg);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+      background: #b8c9b3;
+    }
+
+    .cat-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .side-copy {
+      font-size: 1rem;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      max-width: 240px;
+      padding-top: 18px;
+    }
+
+    .menu-panel {
+      position: fixed;
+      top: var(--nav-height);
+      right: 22px;
+      width: min(300px, calc(100vw - 44px));
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      box-shadow: 0 18px 34px rgba(0,0,0,0.12);
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: 0.25s ease;
+    }
+
+    .menu-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(10px);
+    }
+
+    .menu-panel a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .menu-panel a:hover {
+      background: rgba(0,0,0,0.06);
+    }
+
+    @media (max-width: 1180px) {
+      .giant-text {
+        left: 8px;
+        font-size: clamp(6rem, 13vw, 11rem);
+      }
+
+      .content-grid {
+        margin-left: min(20vw, 240px);
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+      }
+
+      .copy-block,
+      .mid-copy {
+        max-width: 100%;
+      }
+
+      .bottom-row {
+        justify-content: start;
+      }
+    }
+
+    @media (max-width: 860px) {
+      :root {
+        --nav-height: 74px;
+      }
+
+      .navbar {
+        padding: 0 22px;
+      }
+
+      .page-shell {
+        padding: 18px 22px 64px;
+      }
+
+      .giant-text {
+        position: static;
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: clamp(3.6rem, 16vw, 6rem);
+        margin: 10px 0 26px;
+        color: rgba(255,255,255,0.18);
+      }
+
+      .content-grid {
+        margin-left: 0;
+      }
+
+      .arc-title {
+        height: 86px;
+      }
+
+      .arc-title span {
+        transform-origin: center 130px;
+        font-size: clamp(0.8rem, 4.4vw, 1.6rem);
+      }
+
+      .tetris-row {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+
+      .bottom-row {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+
+      .side-copy {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .nav-icons {
+        gap: 18px;
+        font-size: 1.25rem;
+      }
+
+      .logo-area span:first-child {
+        font-size: 1rem;
+      }
+
+      .portrait {
+        width: 100%;
+        max-width: 260px;
+      }
+
+      .meter-card {
+        min-width: 148px;
+        padding: 14px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo-area">
+      <span>katie chan</span>
+    </div>
+    <div class="nav-icons">
+      <span><a href="index.html"><i class="fa-solid fa-briefcase white-text"></i></a></span>
+      <span><a href="portfolio.html"><i class="fa-solid fa-user white-text"></i></a></span>
+      <span><a href="index.html#contact-section"><i class="fa-solid fa-comment white-text"></i></a></span>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="giant-text">LEARN ABOUT ME</div>
+
+    <section class="content-grid">
+      <div class="intro">
+        <div class="copy-block" id="about-copy">
+          <p>
+            I started out as something and then later something somethinged. After that, I decided to change and meow and catalicious type stuff. Now that I am super duper shark and fish, this degree in water fishing will have a dog and a book. I started out as something and then later something somethinged.
+          </p>
+          <p>
+            After that, I decided to change and meow and catalicious type stuff. Now that I am super duper shark and fish, this degree in water fishing will have a dog and a book.
+          </p>
+        </div>
+
+        <div class="hello-wrap">
+          <div class="arc-title" id="arcTitle" aria-label="Hello! I am Katie"></div>
+          <img
+            class="portrait"
+            src="images/katie-portrait.jpg"
+            alt="Portrait of Katie"
+          />
+        </div>
+      </div>
+
+      <div class="tetris-row">
+        <div class="tetris-love">I love tetris!</div>
+
+        <svg class="arrow-svg" viewBox="0 0 180 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M4 35C46 13 78 10 154 15" stroke="#111" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M145 7L156 15L145 24" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <div class="meter-card">
+          <span class="small">40L</span>
+          <span class="big">55.755</span>
+        </div>
+      </div>
+
+      <div class="copy-block mid-copy">
+        <p>
+          I started out as something and then later something somethinged. After that, I decided to change and meow and catalicious type stuff. Now that I am super duper shark and fish.
+        </p>
+      </div>
+
+      <div class="bottom-row">
+        <div class="cat-card">
+          <img src="images/cat.jpg" alt="A fluffy white cat standing on grass" />
+        </div>
+
+        <div class="side-copy">
+          I started out as something and then later something somethinged. After that, I decided to change and meow and catalicious type stuff. Now that I am super duper shark and fish.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const text = 'HELLO! I AM KATIE';
+      const arcTitle = document.getElementById('arcTitle');
+      const chars = [...text];
+      const spread = 78;
+      const start = -spread / 2;
+      const step = spread / Math.max(chars.length - 1, 1);
+          
+      chars.forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        const rotation = start + index * step;
+        span.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
+        arcTitle.appendChild(span);
+      });
+
+      const menuToggle = document.getElementById('menuToggle');
+      const menuPanel = document.getElementById('menuPanel');
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuPanel.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.addEventListener('click', (event) => {
+        const clickedInside = menuPanel.contains(event.target) || menuToggle.contains(event.target);
+        if (!clickedInside) {
+          menuPanel.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -147,6 +147,17 @@
       margin-bottom: 8px;
     }
 
+    a {
+        color:#EDEDED; 
+        text-decoration: none;
+    }
+
+    a:hover {
+        color:#EDEDED; 
+        text-decoration:none; 
+        cursor:pointer;  
+    }
+
     @media (max-width: 1000px) {
       .content-row {
         grid-template-columns: 1fr;
@@ -158,7 +169,8 @@
 
 <header class="navbar">
   <div class="logo-area">
-    <span>katie chan</span>
+    <a href="index.html"><span>katie chan</span></a>
+      <a href="resume.pdf"><span class="logo-icon"><i class="fa-regular fa-file-lines white-text"></i></span></a>
   </div>
   <div class="nav-icons">
     <a href="portfolio.html"><i class="fa-solid fa-briefcase"></i></a>

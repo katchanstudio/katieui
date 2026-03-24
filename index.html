@@ -454,6 +454,17 @@
       font-weight: 400;
     }
 
+    a {
+        color:#EDEDED; 
+        text-decoration: none;
+    }
+
+    a:hover {
+        color:#EDEDED; 
+        text-decoration:none; 
+        cursor:pointer;  
+    }
+
     /* Responsive design */
     @media screen and (max-width: 800px) {
       :root {
@@ -544,8 +555,8 @@
   <!-- FIXED TRANSPARENT NAV (minimal) -->
   <header class="navbar">
     <div class="logo-area">
-      <span>katie chan</span>
-      <span class="logo-icon"><i class="fa-solid fa-file-lines white-text"></i></span>  <!-- small doc icon -->
+      <a href="index.html"><span>katie chan</span></a>
+      <a href="resume.pdf"><span class="logo-icon"><i class="fa-regular fa-file-lines white-text"></i></span></a>
     </div>
     <div class="nav-icons">
       <span><a href="portfolio.html" target="_blank"><i class="fa-solid fa-briefcase white-text"></i></a></span>   <!-- briefcase outline (via stroke) -->
